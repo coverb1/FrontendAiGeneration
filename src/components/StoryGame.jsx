@@ -62,7 +62,10 @@ function StoryGame({ story, onNewStory }) {
   return (
     <div className="">
       {/* Story title at the top */}
-      <p className="h-45">{story.title}</p>
+     {story && (
+  <p className="h-45">{story.title}</p>
+
+)}
 
       <div>
         {/* Show the current part of the story, if we have one */}
@@ -96,8 +99,9 @@ function StoryGame({ story, onNewStory }) {
 
           {onNewStory && (
             <button onClick={onNewStory} className="">
-              New Story
+              New Story hy
             </button>
+            
           )}
         </div>
       </div>

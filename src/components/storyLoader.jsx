@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { useParams, useNavigate } from "react-router-dom"
 import axios from "axios"
 import LoadingStatus from "./LoadingStatus"
+import StoryGame from "./StoryGame"
 
 // This is the starting address (home base) for all our API calls
 const API_BASE_URL = "/api"
@@ -83,12 +84,18 @@ function StoryLoader() {
     )
   }
 
-  // CASE 3: everything worked fine. Show the story.
-  return (
-    <div className="">
-      <p className="h-45">{story ? "Story loaded!" : "StoryLoader"}</p>
-    </div>
-  )
+  // CASE 3: we have a story? Show it using the StoryGame component.
+  if (story) {
+    return (
+      <div className="">
+        <StoryGame story={story} onNewStory={createNewStory} />
+      </div>
+    )
+  }
+
+  // CASE 4 (fallback): not loading, no error, but no story either.
+  // This should rarely happen, but React always needs SOMETHING returned.
+  return null
 }
 
 export default StoryLoader
