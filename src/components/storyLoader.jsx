@@ -89,6 +89,7 @@ function StoryLoader() {
     return (
       <div className="">
         <StoryGame story={story} onNewStory={createNewStory} />
+        <div>hey my name is mucyo bruce</div>
       </div>
     )
   }
